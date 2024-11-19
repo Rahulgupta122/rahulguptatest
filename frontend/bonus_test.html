@@ -1,0 +1,57 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <style>  
+        .box {  
+            width: 1400px;  
+            height: 200px;  
+            margin: 10px;  
+            background-color: rgb(118, 194, 128);  
+            position: relative;  
+            cursor: pointer;  
+        }  
+        .message {  
+            position: absolute;  
+            right: 10px;  
+            top: 50%;  
+            transform: translateY(-50%);  
+            font-weight: bold;  
+            color: white;  
+            background-color: black;  
+            padding: 5px;  
+            border-radius: 5px;  
+        }  
+    </style>  
+    
+    <title>Click to Move Box</title>    
+</head>  
+<body>  
+    <div class="box" ondblclick="togglePin(this)" onclick="bringToFront(this)"><b>Rahul Gupta</b></div>  
+    <div class="box" ondblclick="togglePin(this)" onclick="bringToFront(this)"><b>Akash Sir</b></div>  
+    <div class="box" ondblclick="togglePin(this)" onclick="bringToFront(this)"><b>Subash</b></div>  
+
+    <script>  
+        function bringToFront(box) {  
+            const parent = box.parentNode;  
+            parent.insertBefore(box, parent.firstChild);  
+        }  
+
+        function togglePin(box) {  
+            let message = box.querySelector('.message');  
+            if (message) {  
+                // Remove the message if it exists  
+                box.removeChild(message);  
+            } else {  
+                // Create and add the "Pinned" message  
+                message = document.createElement('div');  
+                message.className = 'message';  
+                message.innerText = 'Pinned';  
+                box.appendChild(message);  
+            }  
+        }  
+    </script>  
+    
+</body>  
+</html>
